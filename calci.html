@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DOM Manipulation</title>
+</head>      
+<body>
+    <div class="app_container">
+        <h1 class="app_name">Calculator</h1>
+        <div class="container">
+            Enter Number 1 : <br />
+            <input type="text" id="num1" /><br /><br />
+            Enter Number 2 : <br />
+            <input type="text" id="num2" /><br /><br />
+           
+        </div>
+        <p id="answer" class="result">Answer:</p>
+        <button type="button" class="reset-button" onkeyup="resetSum()">Reset</button>
+    </div>
+    <script>
+        const inputBox1 = document.getElementById("num1");
+        const inputBox2 = document.getElementById("num2");
+        const answerText = document.getElementById("answer");
+
+        function calculateSum() {
+            const val1 = parseInt(inputBox1.value) || 0;
+            const val2 = parseInt(inputBox2.value) || 0;
+            const sum = val1 + val2;
+            answerText.innerText = `Answer: ${sum}`;
+        }
+
+        function resetSum() {
+            inputBox1.value = "";
+            inputBox2.value = "";
+            answerText.innerText = "Answer:";
+        }
+
+        inputBox1.addEventListener('input', calculateSum);
+        inputBox2.addEventListener('input', calculateSum);
+    </script>
+</body>
+</html>
